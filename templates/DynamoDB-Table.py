@@ -13,6 +13,7 @@ class DynamodbTable():
 
         self.t.add_description("AWS CloudFormation Sample Template: This template "
                           "demonstrates the creation of a DynamoDB table.")
+        self.add_dynamoDB_table()
 
         hashkeyname = self.t.add_parameter(Parameter(
             "HaskKeyElementName",
