@@ -1,1 +1,6 @@
 template_path: templates/DynamoDB-Table.py
+parameters:
+    HashKeyElementName: cloud
+    HashKeyElementType: String
+    ReadCapacityUnits: 5
+    WriteCapacityUnits: 5

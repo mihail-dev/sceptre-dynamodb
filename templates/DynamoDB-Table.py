@@ -1,5 +1,6 @@
 # Converted from DynamoDB_Table.template located at:
 # http://aws.amazon.com/cloudformation/aws-cloudformation-templates/
+# https://s3-us-west-2.amazonaws.com/cloudformation-templates-us-west-2/DynamoDB_Table.template
 
 from troposphere import Output, Parameter, Ref, Template
 from troposphere.dynamodb import (KeySchema, AttributeDefinition,
