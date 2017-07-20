@@ -7,7 +7,7 @@ from troposphere.dynamodb import (KeySchema, AttributeDefinition,
                                   ProvisionedThroughput)
 from troposphere.dynamodb import Table
 
-class DynamodbTable():
+class DynamodbTable(object):
     def __init__(self, sceptre_user_data):
         self.t = Template()
 
@@ -17,7 +17,7 @@ class DynamodbTable():
         self.add_dynamoDB_table()
 
         self.hashkeyname = self.t.add_parameter(Parameter(
-            "HaskKeyElementName",
+            "HashKeyElementName",
             Description="HashType PrimaryKey Name",
             Type="String",
             AllowedPattern="[a-zA-Z0-9]*",
@@ -27,7 +27,7 @@ class DynamodbTable():
         ))
 
         self.hashkeytype = self.t.add_parameter(Parameter(
-            "HaskKeyElementType",
+            "HashKeyElementType",
             Description="HashType PrimaryKey Type",
             Type="String",
             Default="S",
@@ -62,19 +62,19 @@ class DynamodbTable():
             "myDynamoDBTable",
             AttributeDefinitions=[
                 AttributeDefinition(
-                    AttributeName=self.sceptre_user_data["hashkeyname"],
-                    AttributeType=self.sceptre_user_data["hashkeytype"]
+                    AttributeName=self.sceptre_user_data["HashKeyElementName"],
+                    AttributeType=self.sceptre_user_data["HashKeyElementType"]
                 ),
             ],
             KeySchema=[
                 KeySchema(
-                    AttributeName=self.sceptre_user_data["hashkeyname"],
+                    AttributeName=self.sceptre_user_data["HashKeyElementName"],
                     KeyType="HASH"
                 )
             ],
             ProvisionedThroughput=ProvisionedThroughput(
-                ReadCapacityUnits=self.sceptre_user_data["readunits"],
-                WriteCapacityUnits=self.sceptre_user_data["writeunits"]
+                ReadCapacityUnits=self.sceptre_user_data["ReadCapacityUnits"],
+                WriteCapacityUnits=self.sceptre_user_data["WriteCapacityUnits"]
             )
         ))
 
