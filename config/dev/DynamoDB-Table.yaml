@@ -1,10 +1,10 @@
 template_path: templates/DynamoDB-Table.json
-sceptre_user_data:
-  # HashKeyElementName: cloud-table
-  # HashKeyElementType: S
-  # ReadCapacityUnits: '5'
-  # WriteCapacityUnits: '5'
-  hashkeyname: cloud-table
-  hashkeytype: S
-  readunits: 5
-  writeunits: 5
+parameters:
+  HashKeyElementName: cloudTable
+  HashKeyElementType: S
+  ReadCapacityUnits: '5'
+  WriteCapacityUnits: '5'
+  # hashkeyname: cloud-table
+  # hashkeytype: S
+  # readunits: 5
+  # writeunits: 5
