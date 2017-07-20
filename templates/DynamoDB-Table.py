@@ -13,9 +13,10 @@ class DynamodbTable():
 
         self.t.add_description("AWS CloudFormation Sample Template: This template "
                           "demonstrates the creation of a DynamoDB table.")
+        self.sceptre_user_data = sceptre_user_data
         self.add_dynamoDB_table()
 
-        hashkeyname = self.t.add_parameter(Parameter(
+        self.hashkeyname = self.t.add_parameter(Parameter(
             "HaskKeyElementName",
             Description="HashType PrimaryKey Name",
             Type="String",
@@ -25,7 +26,7 @@ class DynamodbTable():
             ConstraintDescription="must contain only alphanumberic characters"
         ))
 
-        hashkeytype = self.t.add_parameter(Parameter(
+        self.hashkeytype = self.t.add_parameter(Parameter(
             "HaskKeyElementType",
             Description="HashType PrimaryKey Type",
             Type="String",
@@ -36,7 +37,7 @@ class DynamodbTable():
             ConstraintDescription="must be either S or N"
         ))
 
-        readunits = self.t.add_parameter(Parameter(
+        self.readunits = self.t.add_parameter(Parameter(
             "ReadCapacityUnits",
             Description="Provisioned read throughput",
             Type="Number",
@@ -46,7 +47,7 @@ class DynamodbTable():
             ConstraintDescription="should be between 5 and 10000"
         ))
 
-        writeunits = self.t.add_parameter(Parameter(
+        self.writeunits = self.t.add_parameter(Parameter(
             "WriteCapacityUnits",
             Description="Provisioned write throughput",
             Type="Number",
@@ -61,19 +62,19 @@ class DynamodbTable():
             "myDynamoDBTable",
             AttributeDefinitions=[
                 AttributeDefinition(
-                    AttributeName=Ref(hashkeyname),
-                    AttributeType=Ref(hashkeytype)
+                    AttributeName=self.sceptre_user_data["hashkeyname"],
+                    AttributeType=self.sceptre_user_data["hashkeytype"]
                 ),
             ],
             KeySchema=[
                 KeySchema(
-                    AttributeName=Ref(hashkeyname),
+                    AttributeName=self.sceptre_user_data["hashkeyname"],
                     KeyType="HASH"
                 )
             ],
             ProvisionedThroughput=ProvisionedThroughput(
-                ReadCapacityUnits=Ref(readunits),
-                WriteCapacityUnits=Ref(writeunits)
+                ReadCapacityUnits=self.sceptre_user_data["readunits"],
+                WriteCapacityUnits=self.sceptre_user_data["writeunits"]
             )
         ))
 
