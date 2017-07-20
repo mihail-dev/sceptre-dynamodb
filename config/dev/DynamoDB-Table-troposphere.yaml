@@ -1,4 +1,4 @@
-template_path: templates/DynamoDB-Table.json
+template_path: templates/DynamoDB-Table.py
 parameters:
   HashKeyElementName: cloudTable
   HashKeyElementType: S

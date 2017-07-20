@@ -1,0 +1,6 @@
+template_path: templates/DynamoDB-Table.json
+parameters:
+  HashKeyElementName: cloudTable
+  HashKeyElementType: S
+  ReadCapacityUnits: '5'
+  WriteCapacityUnits: '5'
