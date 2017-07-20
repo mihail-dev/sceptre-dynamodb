@@ -1,4 +1,4 @@
-template_path: templates/DynamoDB-Table.py
+template_path: templates/DynamoDB-Table.json
 sceptre_user_data:
   # HashKeyElementName: cloud-table
   # HashKeyElementType: S
